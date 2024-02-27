@@ -3,7 +3,7 @@ import Layout from "@/layout";
 export default function Profile() {
   return (
     <>
-      <Layout>
+      <Layout metatitle={"Profile"}>
         <p>Profile</p>
       </Layout>
     </>
