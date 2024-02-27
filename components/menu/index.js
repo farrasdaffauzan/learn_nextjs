@@ -1,8 +1,19 @@
+import Link from "next/link";
+
 export default function () {
   return (
     <div>
-      <a href="./">Home</a>
-      <a href="./">Profile</a>
+      <ul>
+        <li>
+          <Link href="/">Home</Link>
+        </li>
+        <li>
+          <Link href="/profile">Proile</Link>
+        </li>
+        <li>
+          <Link href="/users">Users</Link>
+        </li>
+      </ul>
     </div>
   );
 }
