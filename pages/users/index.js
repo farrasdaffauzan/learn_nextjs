@@ -2,7 +2,7 @@ import Layout from "@/layout";
 
 export default function Users() {
   return (
-    <Layout>
+    <Layout metatitle={"Users"}>
       <p>Users</p>
     </Layout>
   );
