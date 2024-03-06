@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 
 const LayoutComponent = dynamic(() => import("@/layout"));
 
-export default function Notes({ notes }) {
+export default function DetailNotes({ notes }) {
   return (
     <>
       <LayoutComponent metatitle={"Detail Notes"}>
