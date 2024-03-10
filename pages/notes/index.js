@@ -6,14 +6,16 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useQueries } from "@/hooks/useQueries";
 import { useMutation } from "@/hooks/useMutation";
+import useSWR from "swr";
 import { data } from "autoprefixer";
+import fetcher from "@/utils/fetcher";
 
 export default function Notes() {
   const { mutate } = useMutation();
 
-  const { data: listNotes } = useQueries({ prefixUrl: "https://paace-f178cafcae7b.nevacloud.io/api/notes" });
+  // const { data: listNotes } = useQueries({ prefixUrl: "https://paace-f178cafcae7b.nevacloud.io/api/notes" });
 
-  console.log("data =>", listNotes);
+  const { data, isLoading } = useSWR("https://paace-f178cafcae7b.nevacloud.io/api/notes", fetcher, { revalidateOnFocus: true });
 
   const [notes, setNotes] = useState();
   const router = useRouter();

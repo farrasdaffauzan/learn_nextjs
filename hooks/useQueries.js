@@ -9,7 +9,7 @@ export const useQueries = ({ prefixUrl = "" } = {}) => {
 
   const fetchingData = useCallback(async ({ url = "", method = "GET" } = {}) => {
     try {
-      const response = awaitfetch(url, { method });
+      const response = await fetch(url, { method });
       const result = await response.json();
       setData({
         ...data,
