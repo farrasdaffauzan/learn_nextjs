@@ -4,8 +4,17 @@ const LayoutComponent = dynamic(() => import("@/layout"));
 import { Flex, Grid, CardBody, CardHeader, CardFooter, GridItem, Heading, Card, Button, Box, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { useQueries } from "@/hooks/useQueries";
+import { useMutation } from "@/hooks/useMutation";
+import { data } from "autoprefixer";
 
 export default function Notes() {
+  const { mutate } = useMutation();
+
+  const { data: listNotes } = useQueries({ prefixUrl: "https://paace-f178cafcae7b.nevacloud.io/api/notes" });
+
+  console.log("data =>", listNotes);
+
   const [notes, setNotes] = useState();
   const router = useRouter();
 
@@ -30,7 +39,7 @@ export default function Notes() {
     fetchingData();
   }, []);
 
-  console.log("notes => ", notes);
+  // console.log("notes => ", notes);
 
   return (
     <>
