@@ -7,12 +7,12 @@ export const useMutation = () => {
     isError: false,
   });
 
-  const mutate = useCallback(async ({ url = "", method = "POST", payload = {} } = {}) => {
+  const mutate = useCallback(async ({ url = "", method = "POST", payload = {}, headers = {} } = {}) => {
     try {
-      const response = awaitfetch(url, {
+      const response = await fetch(url, {
         method,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        headers: { "Content-Type": "application/json", ...headers },
+        ...(method !== "GET" && { body: JSON.stringify(payload) }),
       });
       const result = await response.json();
       setData({
