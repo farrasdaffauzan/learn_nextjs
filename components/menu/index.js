@@ -5,8 +5,12 @@ import { useQueries } from "@/hooks/useQueries";
 import { useMutation } from "@/hooks/useMutation";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
+import { useContext } from "react";
+import { UserContext } from "@/context/userContext";
 
 export default function Menuku() {
+  const userData = useContext(UserContext);
+
   const router = useRouter();
   const { mutate } = useMutation();
   const { data } = useQueries({
@@ -51,7 +55,8 @@ export default function Menuku() {
           {/* <Link href="/notes">Logout</Link> */}
           <Menu>
             <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-              {data?.data?.name}
+              {/* {data?.data?.name} */}
+              {userData?.name}
             </MenuButton>
             <MenuList>
               <MenuItem onClick={() => handleLogout()}>Logout</MenuItem>
